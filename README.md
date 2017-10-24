@@ -1,5 +1,5 @@
-# databox hello-world-app
-A simple python hello-world-app which runs in the  Databox.
+# databox app-hello-world
+A simple python app-hello-world which runs in the  Databox.
 
 When an app is installed from the Databox UI, this passes the request to  the databox container manager (CM), which installs the app. CM reads the SLA associated with the app and set the following Environment Variables:
 ```
