@@ -22,12 +22,12 @@
 
 	"packages": [
 		{
-			"name": "test",
-			"purpose": "Test package",
+			"name": "Hello World ",
+			"purpose": "Hello - world assumption",
 			"install": "required",
 			"risks": "Leaking all your data.",
 			"benefits": "Demo of the Databox apps.",
-			"datastores": [ "test" ]
+			"datastores": ["DS_helloworld"]
 		}
 	],
 
@@ -35,10 +35,10 @@
 
 	"datasources": [
 		{
-			"type": "test",
+			"type": "helloworld",
 			"required": true,
-			"name": "test",
-			"clientid": "test",
+			"name": "helloworld",
+			"clientid": "DS_helloworld",
 			"granularities": []
 		}
 	],
