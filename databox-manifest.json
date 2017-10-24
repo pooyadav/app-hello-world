@@ -1,0 +1,59 @@
+{
+	"manifest-version": 1,
+
+	"name": "app-hello-world",
+	"databox-type": "app",
+	"version": "0.1.0",
+
+	"description": "A template Databox app in Python",
+	"author": "Poonam Yadav <poonam.yadav@cl.cam.ac.uk>",
+	"license": "MIT",
+	"tags": [
+		"template",
+		"app",
+		"python"
+	],
+
+	"homepage": "https://github.com/me-box/lib-python-databox",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/me-box/lib-python-databox"
+	},
+
+	"packages": [
+		{
+			"name": "test",
+			"purpose": "Test package",
+			"install": "required",
+			"risks": "Leaking all your data.",
+			"benefits": "Demo of the Databox apps.",
+			"datastores": [ "test" ]
+		}
+	],
+
+	"allowed-combinations": [],
+
+	"datasources": [
+		{
+			"type": "test",
+			"required": true,
+			"name": "test",
+			"clientid": "test",
+			"granularities": []
+		}
+	],
+
+	"export-whitelist": [
+		{
+			"url": "https://export.amar.io/",
+			"description": "Databox export destination request logger"
+		}, {
+			"url": "https://wtfismyip.com/json",
+			"description": "Your public IP, location, hostname, ISP, and Tor status"
+		}
+	],
+
+	"resource-requirements": {
+		"store" : "store-json"
+	}
+}
