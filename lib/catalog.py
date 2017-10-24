@@ -15,7 +15,7 @@ def getStoreCatalog(href):
 #this function list all available stores.
 def listAvailableStores():
 	cat = getRootCatalog()
-	cat = json.loads(cat)
+	cat = json.loads(cat.decode())
 	list = {}
 	storeList = []
 	for item in cat['items']:

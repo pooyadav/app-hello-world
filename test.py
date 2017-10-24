@@ -16,6 +16,13 @@ import ssl
 
 store= os.environ['DATABOX_STORE_ENDPOINT']
 print('Store ' + store)
+try:
+        driverStore = json.loads(os.environ['DATASOURCE_DS_helloworld'])
+        driverStore_endPoint = driverStore["href"]
+        print('driverStore ' + str(driverStore_endPoint))
+except NameError:
+        print("error")
+        driverStore_endPoint = '{}'
 
 hostname = os.environ['DATABOX_LOCAL_NAME']
 
@@ -37,14 +44,20 @@ data = {}
 dx = databox.waitForStoreStatus(store, 'active', 100)
 print("Store is active now")
 
-
 #write key-value pair in the store
 res= databox.key_value.write(store, 'test', { 'foo': 'bar' })
-print("response"+str(res))
+print("response write"+str(res))
+
+response = databox.key_value.read(store, 'test')
+print("response received"+str(response))
 
 #Get the root catalog of all stores from the arbiter
 cat = databox.getRootCatalog()
 print("Root Catalog " + str(cat))
+
+list= databox.listAvailableStores()
+print("available stores")
+print(list)
 
 #Register a datastore catalog with the store.
 dataSourceTemp = json.dumps({
