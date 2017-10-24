@@ -1,7 +1,7 @@
-# databox hello-world-driver
-A simple python hello-world-driver which connects with Databox.
+# databox hello-world-app
+A simple python hello-world-app which runs in the  Databox.
 
-When a driver is installed from the Databox UI, this passes the request to  the databox container manager (CM), which installs the driver. CM reads the SLA associated with the driver and set the following Environment Variables:
+When an app is installed from the Databox UI, this passes the request to  the databox container manager (CM), which installs the app. CM reads the SLA associated with the app and set the following Environment Variables:
 ```
 DATABOX_ARBITER_ENDPOINT
 DATABOX_LOCAL_NAME
@@ -10,10 +10,11 @@ DATABOX_ROOT_CA
 Localcontainername_PEM
 Localcontainername.pem
 Localcontainername_key=ARBITER_TOKEN
+DATABOX_EXPORT_SERVICE_ENDPOINT
 ```
 Therefore, 
-1. to integrate a driver as a databox driver, driver needs to have access to the keys and token to access stores.
-2. Driver requests a data-store by configuring it in the databox-manifest.json file - template shown below. When container manager install the driver, it also launches a data-store of the requested type.
+1. to integrate an app as a databox app, the app needs to have access to the keys and token to access stores.
+2. App requests access to a data-store by configuring it in the databox-manifest.json file - template shown below. When container manager install the app, it also launches a data-store of the requested type.
 3. In a "store" of type "store-json", following APIs could be called.
 
 ```
@@ -46,15 +47,15 @@ In the manifest, two important things to notice here are "databox-type" and "res
 
 ```
 {	"manifest-version": 1,
-	"name": "driver-hello-world",
-	"databox-type": "driver",
+	"name": "app-hello-world",
+	"databox-type": "app",
 	"version": "0.1.0",
-	"description": "A template Databox driver in Python",
+	"description": "A template Databox app in Python",
 	"author": "Poonam Yadav <p.yadav@acm.org> (http://poonamyadav.net/)",
 	"license": "MIT",
 	"tags": [
 		"template",
-		"driver",
+		"app",
 		"mock",
 		"python"
 	],
