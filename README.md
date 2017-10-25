@@ -34,11 +34,12 @@ Therefore,
 3. In a "store" of type "store-json", following function permissions are
 
 ```
-method: GET, endpoint:  driver-hello-world-store-json/status
-method: GET, endpoint:  driver-hello-world-store-json/ws
-method: GET, endpoint: driver-hello-world-store-json/sub/*
-method: GET, endpoint:  driver-hello-world-store-json/unsub/*
-method: POST, endpoint: driver-hello-world-store-json/cat 
+method: GET, endpoint:  app-hello-world-store-json/cat (From container-manager)
+method: GET, endpoint:  app-hello-world-store-json/status (from the app)
+method: GET, endpoint:  app-hello-world-store-json/ws (from the app)
+method: GET, endpoint:  app-hello-world-store-json/sub/* (from the app)
+method: GET, endpoint:  app-hello-world-store-json/unsub/* (from the app)
+method: POST, endpoint: app-hello-world-store-json/cat (from the app)
 
 ```
 4. Configure and create local data store stream - template of information which need to provide to the API.
