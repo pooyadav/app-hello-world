@@ -15,7 +15,13 @@ DATABOX_LOCAL_NAME = app-hello-world
 DATABOX_STORE_ENDPOINT = https://app-hello-world-store-json:8080
 Localcontainername_key=ARBITER_TOKEN
 DATABOX_EXPORT_SERVICE_ENDPOINT = https://export-service:8080
-DATASOURCE_DS_helloworld = {"item-metadata":[{"val":"hello-world","rel":"urn:X-hypercat:rels:hasDescription:en"},{"val":"text/json","rel":"urn:X-hypercat:rels:isContentType"},{"val":"Databox Inc.","rel":"urn:X-databox:rels:hasVendor"},{"val":"helloworld","rel":"urn:X-databox:rels:hasType"},{"val":"helloworld","rel":"urn:X-databox:rels:hasDatasourceid"},{"val":"store-json","rel":"urn:X-databox:rels:hasStoreType"}],"href":"https://driver-hello-world-store-json:8080/helloworld"}
+DATASOURCE_DS_helloworld = {"item-metadata":[{"val":"hello-world","rel":"urn:X-hypercat:rels:hasDescription:en"},
+
+{"val":"text/json","rel":"urn:X-hypercat:rels:isContentType"},{"val":"Databox Inc.","rel":"urn:X-databox:rels:hasVendor"},
+
+{"val":"helloworld","rel":"urn:X-databox:rels:hasType"},{"val":"helloworld","rel":"urn:X-databox:rels:hasDatasourceid"},
+
+{"val":"store-json","rel":"urn:X-databox:rels:hasStoreType"}],"href":"https://driver-hello-world-store-json:8080/helloworld"}
 ```
 From DATASOURCE_DS_helloworld, we can extract endpoints of the driver store. In this example, it is
 ```
@@ -25,14 +31,14 @@ driverStore = "https://driver-hello-world-store-json:8080"
 Therefore, 
 1. to integrate an app as a databox app, the app needs to have access to the keys and token to access stores.
 2. App requests access to a data-store by configuring it in the databox-manifest.json file - template shown below. When container manager install the app, it also launches a data-store of the requested type.
-3. In a "store" of type "store-json", following APIs could be called.
+3. In a "store" of type "store-json", following function permissions are
 
 ```
-GET - driver-hello-world-store-json/status
-GET - driver-hello-world-store-json/ws
-GET - driver-hello-world-store-json/sub/*
-GET - driver-hello-world-store-json/unsub/*
-POST - driver-hello-world-store-json/cat 
+method: GET, endpoint:  driver-hello-world-store-json/status
+method: GET, endpoint:  driver-hello-world-store-json/ws
+method: GET, endpoint: driver-hello-world-store-json/sub/*
+method: GET, endpoint:  driver-hello-world-store-json/unsub/*
+method: POST, endpoint: driver-hello-world-store-json/cat 
 
 ```
 4. Configure and create local data store stream - template of information which need to provide to the API.
