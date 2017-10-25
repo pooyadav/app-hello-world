@@ -20,6 +20,9 @@ try:
         driverStore = json.loads(os.environ['DATASOURCE_DS_helloworld'])
         driverStore_endPoint = driverStore["href"]
         print('driverStore ' + str(driverStore_endPoint))
+        rurl = urllib3.util.parse_url(driverStore_endPoint)
+        ds_url = rurl.scheme + ':' + '//' + rurl.host + ':' + str(rurl.port)
+        print('driverStore URL ' + str(ds_url))
 except NameError:
         print("error")
         driverStore_endPoint = '{}'
@@ -59,7 +62,7 @@ list= databox.listAvailableStores()
 print("available stores")
 print(list)
 
-#Register a datastore catalog with the store.
+#Register a datastore "stream/key" with the local store catalog.
 dataSourceTemp = json.dumps({
         "description":'hello-world',
         "contentType":'text/json',
@@ -70,3 +73,14 @@ dataSourceTemp = json.dumps({
         })
 response = databox.registerDatasource(store,dataSourceTemp)
 print("Response from the data registered " + str(response))
+
+#read from the driver data stream "helloworld"
+response = databox.key_value.read(ds_url, 'helloworld')
+print("response received from driver store"+str(response))
+
+#export data to external url 
+databox.export.longpoll('https://export.amar.io/', {"helloworld": response.decode('utf8').replace("'", '"')})
+
+#Check all environment variables
+for a in os.environ:
+    print('Var: ', a, 'Value: ', os.getenv(a))
