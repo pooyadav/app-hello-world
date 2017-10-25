@@ -65,19 +65,42 @@ In the manifest, two important things to notice here are "databox-type" and "res
 		"type": "git",
 		"url": "git+https://github.com/me-box/lib-python-databox"
 	},
-   
+	
 	"allowed-combinations": [],
+   	
+	"packages": [
+		{
+			"name": "Hello World ",
+			"purpose": "Hello - world assumption",
+			"install": "required",
+			"risks": "Leaking all your data.",
+			"benefits": "Demo of the Databox apps.",
+			"datastores": ["DS_helloworld"] 
+		}
+	],
+	"datasources": [
+		{
+			"type": "helloworld",
+			"required": true,
+			"name": "helloworld",
+			"clientid": "DS_helloworld",
+			"granularities": []
+		}
+	],
+
+	"export-whitelist": [
+		{
+			"url": "https://export.amar.io/",
+			"description": "Databox export destination request logger"
+		}, {
+			"url": "https://wtfismyip.com/json",
+			"description": "Your public IP, location, hostname, ISP, and Tor status"
+		}
+	],
+	
 	"resource-requirements": {
 		"store": "store-json"
 	}
 }
-```
-From app-server, these are the following APIs exposed to SDK, which allows accessing of the databox.
 
-```/api/datasource/list
-   /api/installed/list
-   /api/:type/list
-   /list-apps
-   /api/install
-```   
 
