@@ -4,6 +4,7 @@ A simple python app-hello-world which runs in the  Databox.
 When an app is installed from the Databox UI, this passes the request to  the databox container manager (CM), which installs the app. CM reads the SLA associated with the app and set the Environment Variables: The environment variables that can be accessed inside the databox app can be listed by:
 ```
 import os
+import lib as databox
 
 for a in os.environ: 
 print( a, '=', os.getenv(a))
